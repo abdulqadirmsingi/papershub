@@ -362,6 +362,10 @@ body {
   position: relative;
   text-align: center;
 }
+.panel-body{
+  margin-bottom: 35px;
+  padding-left: 10px;
+}
 
 .mu-title-area h2::before {
   content: "";
@@ -384,9 +388,10 @@ body {
 	display: inline;
 	float: left;
 	width: 100%;
-	text-align: center;
+	text-align: left;
 	padding: 0 150px;
 	margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .mu-faq-content .panel-default {
@@ -422,6 +427,7 @@ body {
 .mu-faq-content .panel-title a>span {
 	margin-right: 10px;
 }
+
 
 /*Footer*/
 
