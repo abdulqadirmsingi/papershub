@@ -188,8 +188,13 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
-                      <a href="#collapseOne" data-bs-toggle="collapse">
-                        <span class="fa fa-plus"></span> What is PapersHub?
+                      <a
+                        data-parent="#accordion"
+                        href="#collapseOne"
+                        aria-expanded="true"
+                        data-bs-toggle="collapse"
+                      >
+                        <span class="fa fa-minus"></span> What is PapersHub?
                       </a>
                     </h4>
                   </div>
@@ -220,9 +225,8 @@
                     <div class="panel-body">
                       On PapersHub, you'll find a wide range of materials,
                       including: Past exam papers from various educational
-                      institutions. Detailed study notes covering different
-                      subjects and topics. Tutorials and guides to help you
-                      understand complex concepts. Summaries for quick revision.
+                      institutions. Study notes covering different
+                      subjects. Tutorials to help you understand complex concepts. Summaries for quick revision.
                     </div>
                   </div>
                 </div>
@@ -256,8 +260,7 @@
                   <div id="collapseFour" class="panel-collapse collapse">
                     <div class="panel-body">
                       You can easily access past papers by navigating to the
-                      relevant subject or course. Visit the 'Resources' link to
-                      find the papers you need.
+                      relevant subject or course by visiting the 'Resources' link.
                     </div>
                   </div>
                 </div>
@@ -310,7 +313,7 @@
                   <div id="collapseSix" class="panel-collapse collapse">
                     <div class="panel-body">
                       Yes! Upgrading your account allows you to unlock premium
-                      content, download more materials.
+                      content, download more materials different from unsubscribed users
                     </div>
                   </div>
                 </div>
@@ -423,6 +426,19 @@
         // Initial check on page load
         document.addEventListener("DOMContentLoaded", function () {
           handleScroll();
+        });
+      </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const faqItems = document.querySelectorAll(".panel-title");
+
+          faqItems.forEach(function (item) {
+            item.addEventListener("click", function () {
+              const icon = item.querySelector(".fa");
+              icon.classList.toggle("fa-minus");
+              icon.classList.toggle("fa-plus");
+            });
+          });
         });
       </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
