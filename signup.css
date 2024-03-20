@@ -117,6 +117,13 @@ body {
   left: 95%;
   color: #777;
 }
+#confirm-password-toggle {
+  cursor: pointer;
+  position: relative;
+  top: -38px;
+  left: 95%;
+  color: #777;
+}
 
 .btn {
   background-color: rgb(39, 92, 207);
@@ -229,6 +236,9 @@ body {
     margin-bottom: 30px;
   }
   #password-toggle {
+    left: 92%;
+  }
+  #confirm-password-toggle {
     left: 92%;
   }
 }
