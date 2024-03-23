@@ -1,5 +1,6 @@
 const passwordInput = document.getElementById("password");
 const passwordToggle = document.getElementById("password-toggle");
+const password = document.getElementById("password");
 
 passwordToggle.addEventListener("click", function () {
   if (passwordInput.type === "password") {
@@ -9,29 +10,17 @@ passwordToggle.addEventListener("click", function () {
   }
 });
 
-const password = document.getElementById("password");
-const confirm_password = document.getElementById("confirm_password");
-
-function validatePassword() {
-  if (password.value !== confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords do not match");
-  } else {
-    confirm_password.setCustomValidity("");
-  }
-}
-
-password.onchange = validatePassword;
-
-// login.js
-
 // Assuming you have an API endpoint for login (e.g., /api/login)
 const loginForm = document.getElementById("login-form");
 
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  const existingErrors = loginForm.querySelectorAll(".error-message");
+  existingErrors.forEach((error) => error.remove());
 
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const errorMessage = document.getElementById("error-message");
 
   try {
     // Make a POST request to your login API endpoint
@@ -45,20 +34,27 @@ loginForm.addEventListener("submit", async (e) => {
 
     if (response.ok) {
       // Assuming your API returns a token
-      const { token } = await response.json();
-
-      // Store the token (e.g., in localStorage or a cookie)
-      localStorage.setItem("authToken", token);
-
+       const  token  = await response.json(); 
+       console.log(token);
+       localStorage.setItem("authToken", JSON.stringify(token));
       // Redirect to resources.html
       window.location.href = "/resources.html";
     } else if (response.status === 404) {
       // Account not found
-      errorMessage.textContent =
-        "Account does not exist. Please check your credentials.";
+      const errorMessage = document.createElement("div");
+      errorMessage.textContent = "This Account was not found";
+      errorMessage.classList.add("error-message");
+      errorMessage.style.color = "red";
+      errorMessage.style.paddingBottom = "20px";
+      loginForm.insertBefore(errorMessage, loginForm.firstChild);
     } else {
       // Handle login failure (show error message, etc.)
-      console.error("Login failed");
+      const errorMessage = document.createElement("div");
+      errorMessage.textContent = "Incorrect Credentials";
+      errorMessage.classList.add("error-message");
+      errorMessage.style.color = "red";
+      errorMessage.style.paddingBottom = "20px";
+      loginForm.insertBefore(errorMessage, loginForm.firstChild);
     }
   } catch (error) {
     console.error("Error during login:", error);
