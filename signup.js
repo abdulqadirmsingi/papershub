@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (successMessage) {
             successMessage.remove();
           }
-        }, 5000); // 5 seconds // Reset the form to its initial state
+        }, 5000); 
       })
 
       .catch(function (error) {
@@ -80,9 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
           errorMessage.textContent =
             "Email is already taken. Please use a different email.";
           errorMessage.classList.add("error-message");
-          errorMessage.style.color = "red"; // Set color to red
+          errorMessage.style.color = "red"; 
           errorMessage.style.paddingBottom = "20px";
-          form.insertBefore(errorMessage, form.firstChild); // Insert error message at the beginning of the form
+          form.insertBefore(errorMessage, form.firstChild); 
         } else if (
           error.response.status === 400 &&
           error.response.data.phone_number
