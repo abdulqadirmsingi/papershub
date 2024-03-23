@@ -362,7 +362,7 @@ body {
   position: relative;
   text-align: center;
 }
-.panel-body{
+.panel-body {
   margin-bottom: 35px;
   padding-left: 10px;
 }
@@ -378,56 +378,48 @@ body {
   width: 30%;
 }
 .mu-faq-area {
-	display: inline;
-	float: left;
-	padding: 100px 0;
-	width: 100%;
+  display: inline;
+  float: left;
+  padding: 50px 0;
+  width: 100%;
 }
 
 .mu-faq-content {
-	display: inline;
-	float: left;
-	width: 100%;
-	text-align: left;
-	padding: 0 150px;
-	margin-top: 50px;
+  display: inline;
+  float: left;
+  width: 100%;
+  text-align: left;
+  padding: 0 150px;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 
 .mu-faq-content .panel-default {
-	
-	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.06);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.06);
 }
 
 .mu-faq-content .panel-default > .panel-heading {
-	background-color: #fff;
-	border-color: #1608dd;
-	padding: 0;
-
+  background-color: #fff;
+  border-color: #1608dd;
+  padding: 0;
 }
-
-.mu-faq-content .panel-default > .panel-heading + .panel-collapse > .panel-body {
-	text-align: center;
-}
-
 
 .mu-faq-content .panel-title {
-	text-align: left;
+  text-align: left;
 }
 
 .mu-faq-content .panel-title a {
-	display: block;
-	padding: 12px 15px;
-	-webkit-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
+  display: block;
+  padding: 12px 15px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
   text-decoration: none;
 }
 
-.mu-faq-content .panel-title a>span {
-	margin-right: 10px;
+.mu-faq-content .panel-title a > span {
+  margin-right: 10px;
 }
-
 
 /*Footer*/
 
@@ -564,6 +556,16 @@ body {
 
   .benefits h2::before {
     width: 30%;
+  }
+
+  .mu-faq-content {
+    padding: 0px 20px;
+  }
+
+  .mu-title-area h2 {
+    font-size: 27px;
+    padding: 0 5px;
+    margin-bottom: 0;
   }
 }
 @media (max-width: 574px) {
