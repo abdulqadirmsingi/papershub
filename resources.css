@@ -10,6 +10,11 @@ body {
   max-width: 2000px !important;
   margin: 0 auto !important;
 }
+.top_container {
+  background: url(../images/intro-bg.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .bg-dark {
   background-color: inherit !important;
@@ -50,14 +55,68 @@ body {
 .preview h2 {
   font-weight: 600;
   font-size: 40px;
+  padding-bottom: 50px;
 }
 .about-content {
-  height: 1200px;
+  height: 1000px;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+.faq .faq-list {
+  padding: 0;
+  list-style: none;
+}
+
+.faq .faq-list li {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.faq .faq-list a {
+  display: block;
+  position: relative;
+  font-family: #7cc576;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  padding-right: 25px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.faq .faq-list i {
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.faq .faq-list p {
+  margin-bottom: 0;
+  padding: 10px 0 0 0;
+}
+
+.faq .faq-list a.collapsed {
+  color: #343a40;
+}
+
+.faq .faq-list a.collapsed:hover {
+  color: rgb(18, 61, 155);
+}
+.text-start.mb-5 {
+  display: flex;
+  align-items: center;
+}
+
+.text-start.mb-5 p {
+  margin-bottom: 0; /* Remove bottom margin from <p> */
 }
 .footerr {
   background-size: 100%;
   padding: 30px 30px 10px 30px;
-  background: linear-gradient(to bottom, rgb(21, 70, 185), rgb(10, 42, 110));
+  background: rgb(18, 61, 155);
 }
 .footerr ul {
   padding-left: 0rem;
@@ -131,23 +190,14 @@ body {
   .nav-link:hover {
     color: rgb(204, 184, 0);
   }
-
-  .top_container::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 38%;
-    background: url(../images/intro-bg.png);
-    background-size: cover;
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    z-index: -1;
+  #logout-link:hover {
+    color: rgb(204, 184, 0);
   }
 }
 
 @media (max-width: 767px) {
   .top_container {
-    background: url(images/intro-bg.png);
+    background: url(images/intro-bg.webp);
     background-repeat: no-repeat;
   }
   .preview {
