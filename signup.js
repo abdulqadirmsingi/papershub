@@ -116,3 +116,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
+
+function validateYear(input) {
+  if (input.value > 4) {
+    input.value = 4; // Reset the value to 4 if it exceeds the maximum
+  }
+}

@@ -58,14 +58,24 @@ body {
   padding-bottom: 50px;
 }
 .about-content {
-  height: 1000px;
-  padding-top: 50px;
-  padding-bottom: 10px;
+  /* height: 1000px; */
+  padding-top: 80px;
+  padding-bottom: 100px;
   padding-left: 10px;
 }
+
+.about-content h1 {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
 .faq .faq-list {
   padding: 0;
   list-style: none;
+}
+
+.faq .faq-list h2 {
+  margin-bottom: 15px;
 }
 
 .faq .faq-list li {
@@ -96,6 +106,7 @@ body {
 .faq .faq-list p {
   margin-bottom: 0;
   padding: 10px 0 0 0;
+  min-width: 550px;
 }
 
 .faq .faq-list a.collapsed {
@@ -113,6 +124,7 @@ body {
 .text-start.mb-5 p {
   margin-bottom: 0; /* Remove bottom margin from <p> */
 }
+
 .footerr {
   background-size: 100%;
   padding: 30px 30px 10px 30px;
@@ -195,6 +207,12 @@ body {
   }
 }
 
+@media (max-width: 900px) {
+  .footer-col {
+    width: 50%;
+  }
+}
+
 @media (max-width: 767px) {
   .top_container {
     background: url(images/intro-bg.webp);
@@ -211,14 +229,38 @@ body {
   .nav-link.active {
     color: white !important;
   }
+}
 
-  .footer-col {
-    width: 50%;
-    margin-bottom: 30px;
+@media (max-width: 660px) {
+  .about-content {
+    padding-top: 60px;
+  }
+
+  .about-content h1 {
+    font-size: 27px;
+  }
+
+  .faq .faq-list p {
+    min-width: unset;
+  }
+
+  .faq .faq-list li {
+    padding-bottom: 10px;
+  }
+
+  .justify-content-end {
+    justify-content: center;
+    flex-direction: column;
   }
 }
+
 @media (max-width: 574px) {
   .footer-col {
     width: 100%;
+  }
+
+  .g-5,
+  .gx-5 {
+    --bs-gutter-x: unset;
   }
 }

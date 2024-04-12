@@ -115,7 +115,6 @@ body {
   padding: 60px 20px;
 }
 
-
 /*Benefits*/
 
 .benefits {
@@ -545,12 +544,12 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .footer-col {
     width: 50%;
-    margin-bottom: 30px;
   }
-
+}
+@media (max-width: 767px) {
   .service h2::before {
     width: 30%;
   }

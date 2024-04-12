@@ -29,7 +29,12 @@
             <img src="images/stack-of-books.png" alt="" id="nav-img" />
             <h2>PapersHub</h2>
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navmenu"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
 
@@ -64,32 +69,93 @@
         <form action="post">
           <div class="form-group">
             <label>First Name</label>
-            <input type="text" id="first_name" placeholder="First Name" name="first_name" required />
+            <input
+              type="text"
+              id="first_name"
+              placeholder="First Name"
+              name="first_name"
+              required
+            />
           </div>
           <div class="form-group">
             <label>Last Name</label>
-            <input type="text" id="last_name" placeholder="Last Name" name="last_name" required />
+            <input
+              type="text"
+              id="last_name"
+              placeholder="Last Name"
+              name="last_name"
+              required
+            />
           </div>
           <div class="form-group">
-            <label >Email</label>
-            <input type="email" id="email" placeholder="your-email@gmail.com" name="email" required />
+            <label>Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="your-email@gmail.com"
+              name="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Course</label>
+            <select id="program" name="program" class="form-control" required>
+              <option selected disabled hidden value="">Select Program</option>
+              <option value="CS">Computer Science (CS)</option>
+              <option value="CEIT">Computer Engineering (CEIT)</option>
+              <option value="BIT">Business Information System (BIT)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Year</label>
+            <input
+              type="number"
+              id="year"
+              min="1"
+              max="4"
+              placeholder="Enter Your Year"
+              name="year"
+              oninput="validateYear(this)"
+              required
+            />
           </div>
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="text" id="phone_number" placeholder="Phone Number" name="phone_number" required />
+            <input
+              type="text"
+              id="phone_number"
+              placeholder="Phone Number"
+              name="phone_number"
+              required
+            />
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" id="password" placeholder="Your Password" name="password" required />
+            <input
+              type="password"
+              id="password"
+              placeholder="Your Password"
+              name="password"
+              required
+            />
             <i class="fas fa-eye" id="password-toggle"></i>
           </div>
           <div class="form-group">
             <label>Confirm Password</label>
-            <input type="password" id="confirm_password" placeholder="Confirm Password" name="confirm_password" required />
+            <input
+              type="password"
+              id="confirm_password"
+              placeholder="Confirm Password"
+              name="confirm_password"
+              required
+            />
             <i class="fas fa-eye" id="confirm-password-toggle"></i>
           </div>
           <button class="btn" type="submit">Register</button>
-          <div class="sign-up">Already Have an Account? <a href="login.html" class="signup-btn"> Login</a></div>
+          <div class="sign-up">
+            Already Have an Account?
+            <a href="login.html" class="signup-btn"> Login</a>
+          </div>
         </form>
       </div>
     </div>
@@ -126,7 +192,10 @@
           </div>
           <div class="footer-col">
             <h4>PapersHub</h4>
-            <p>PapersHub is your solution for resources for University Students at an affordable amount</p>
+            <p>
+              PapersHub is your solution for resources for University Students
+              at an affordable amount
+            </p>
           </div>
         </div>
       </div>
@@ -137,7 +206,7 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"
   ></script>
-  
+
   <script src="signup.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </html>

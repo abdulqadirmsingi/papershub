@@ -212,22 +212,16 @@ body {
   background-color: #ffffff;
 }
 
+@media (max-width: 900px) {
+  .footer-col {
+    width: 50%;
+  }
+}
+
 @media (min-width: 767px) {
   .nav-link:hover {
     color: rgb(204, 184, 0);
   }
-
-  /*.top_container::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 38%;
-    background: url(../images/intro-bg.webp);
-    background-size: cover;
-    background-position: right bottom;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }*/
 }
 
 @media (max-width: 767px) {
@@ -245,11 +239,6 @@ body {
 
   .nav-link.active {
     color: white !important;
-  }
-
-  .footer-col {
-    width: 50%;
-    margin-bottom: 30px;
   }
 }
 @media (max-width: 574px) {

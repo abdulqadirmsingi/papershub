@@ -233,10 +233,10 @@ body {
     color: rgb(221, 207, 81);
   }
 }
-@media (max-width: 767px) {
+
+@media (max-width: 900px) {
   .footer-col {
     width: 50%;
-    margin-bottom: 30px;
   }
 }
 
