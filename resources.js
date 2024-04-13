@@ -13,8 +13,6 @@ const getCookie = (name) => {
 const accessToken = getCookie("accessToken");
 //const refreshToken = getCookie("refreshToken");
 
-if (!accessToken ) {
+if (!accessToken) {
   window.location.href = "/login.html";
 }
-
-
