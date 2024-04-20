@@ -53,8 +53,16 @@ loginForm.addEventListener("submit", async (e) => {
 
     if (response.ok) {
       // Assuming your API returns a token
-       const token = await response.text(); // Assuming Django Simple JWT returns tokens directly
-       setCookie("accessToken", token, 7);
+       const { access, refresh } = await response.json();
+
+       // Set access token cookie
+       setCookie("accessToken", access, 7);
+       // Set refresh token cookie
+       setCookie("refreshToken", refresh, 7);
+
+       // Display tokens independently
+       console.log("Access Token:", access);
+       console.log("Refresh Token:", refresh);
 
       // Redirect to resources.html
       window.location.href = "/resources.html";
