@@ -57,76 +57,99 @@ body {
   font-size: 40px;
   padding-bottom: 50px;
 }
-.about-content {
-  /* height: 1000px; */
-  padding-top: 50px;
-  padding-bottom: 100px;
-  padding-left: 10px;
+
+.papers-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 40px;
 }
 
-.about-content h1 {
-  text-align: center;
-  padding-bottom: 15px;
+.paper {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  border: 1px solid rgb(222, 226, 230);
+  align-items: center;
+  padding: 5px 0;
 }
 
-.faq .faq-list {
-  padding: 0;
-  list-style: none;
+.papers-content h2 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 65px;
 }
-
-.faq .faq-list h2 {
-  margin-bottom: 15px;
-}
-
-.faq .faq-list li {
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-}
-
-.faq .faq-list a {
-  display: block;
-  position: relative;
-  font-family: #7cc576;
+.paper-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 18px;
-  line-height: 24px;
-  font-weight: 400;
-  padding-right: 25px;
-  cursor: pointer;
+}
+
+.paper-text img {
+  width: 60px;
+}
+
+.paper a {
   text-decoration: none;
 }
 
-.faq .faq-list i {
-  font-size: 24px;
-  position: absolute;
-  right: 0;
-  top: 0;
+.paper-button button {
+  background-color: white;
+  color: rgb(27, 79, 196);
+  border: 2px solid rgb(27, 79, 196);
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-size: 18px;
 }
 
-.faq .faq-list p {
-  margin-bottom: 0;
-  padding: 10px 0 0 0;
-  min-width: 550px;
+.paper-button button:hover {
+  background-color: rgb(27, 79, 196);
+  color: white;
 }
 
-.faq .faq-list a.collapsed {
-  color: #343a40;
+.paper.alternate {
+  background-color: rgb(242, 242, 242);
 }
 
-.faq .faq-list a.collapsed:hover {
-  color: rgb(18, 61, 155);
-}
-#faq1 h2 {
-  margin-bottom: 0; /* Remove bottom margin for the heading */
+.blurred {
+  filter: blur(4px);
 }
 
-.text-start.mb-5 {
+.blurred .download-button:hover {
+  cursor: not-allowed;
+  background-color: inherit;
+  color: inherit;
+}
+
+.unlock-section {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 21px;
+  align-items: center;
+}
+
+.unlock-text {
   display: flex;
   align-items: center;
 }
 
-.text-start.mb-5 p {
-  margin-bottom: 0; 
+.unlock-section button {
+  background-color: rgb(27, 79, 196);
+  color: white;
+  transition: 0.3s;
+  padding: 11px;
+  border-radius: 10px;
+  border: none;
+  width: 320px;
+}
+
+.unlock-section button:hover {
+  filter: brightness(0.9);
 }
 
 .footerr {
@@ -233,38 +256,34 @@ body {
   .nav-link.active {
     color: white !important;
   }
-}
 
-@media (max-width: 660px) {
-  .about-content {
-    padding-top: 60px;
+  .papers-content {
+    padding: 50px 20px;
   }
 
-  .about-content h1 {
-    font-size: 27px;
+  .papers-content h2 {
+    font-size: 28px;
   }
 
-  .faq .faq-list p {
-    min-width: unset;
+  .paper {
+    width: 90%;
   }
 
-  .faq .faq-list li {
-    padding-bottom: 10px;
+  .paper-button button {
+    display: none;
   }
 
-  .justify-content-end {
-    justify-content: center;
-    flex-direction: column;
+  .unlock-text p {
+    margin-bottom: 20px;
+  }
+
+  .unlock-section button {
+    margin-bottom: 40px;
   }
 }
 
 @media (max-width: 574px) {
   .footer-col {
     width: 100%;
-  }
-
-  .g-5,
-  .gx-5 {
-    --bs-gutter-x: unset;
   }
 }

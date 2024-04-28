@@ -43,7 +43,7 @@ loginForm.addEventListener("submit", async (e) => {
 
   try {
     // Make a POST request to your login API endpoint
-    const response = await fetch("http://127.0.0.1:8000/myusers/login/", {
+    const response = await fetch("http://127.0.0.1:8000/api/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,9 +60,6 @@ loginForm.addEventListener("submit", async (e) => {
        // Set refresh token cookie
        setCookie("refreshToken", refresh, 7);
 
-       // Display tokens independently
-       console.log("Access Token:", access);
-       console.log("Refresh Token:", refresh);
 
       // Redirect to resources.html
       window.location.href = "/resources.html";
