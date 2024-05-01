@@ -66,6 +66,7 @@ body {
   padding: 100px 40px;
 }
 
+
 .paper {
   display: flex;
   justify-content: space-between;
@@ -126,6 +127,7 @@ body {
 
 .unlock-section {
   margin-top: 50px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   gap: 7px;

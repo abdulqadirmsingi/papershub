@@ -14,29 +14,25 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
-});
 
-const getCookie = (name) => {
-  const cookieName = `${name}=`;
-  const cookieArray = document.cookie.split(";");
-  for (let i = 0; i < cookieArray.length; i++) {
-    let cookie = cookieArray[i].trim();
-    if (cookie.indexOf(cookieName) === 0) {
-      return cookie.substring(cookieName.length, cookie.length);
+  const getCookie = (name) => {
+    const cookieName = `${name}=`;
+    const cookieArray = document.cookie.split(";");
+    for (let i = 0; i < cookieArray.length; i++) {
+      let cookie = cookieArray[i].trim();
+      if (cookie.indexOf(cookieName) === 0) {
+        return cookie.substring(cookieName.length, cookie.length);
+      }
     }
+    return null;
+  };
+
+  const accessToken = getCookie("accessToken");
+  const refreshToken = getCookie("refreshToken");
+
+  if (!accessToken || !refreshToken) {
+    window.location.href = "/login.html";
   }
-  return null;
-};
-
-const accessToken = getCookie("accessToken");
-const refreshToken = getCookie("refreshToken");
-
-if (!accessToken || !refreshToken) {
-  window.location.href = "/login.html";
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-
   const displayPastPapers = (courseId) => {
     // Make a fetch request to the backend API using the provided course ID
     fetch(`http://127.0.0.1:8000/papers/Course/${courseId}/paper/`, {
@@ -55,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
           .filter((course) => course.course === courseId)
           .forEach((paper) => {
             const papersContainer = document.querySelector(".papers-content");
-            papersContainer.innerHTML = "";
 
             const paperDiv = document.createElement("div");
             paperDiv.classList.add("paper");
@@ -81,7 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             paperDiv.appendChild(paperText);
             paperDiv.appendChild(paperButton);
-            papersContainer.appendChild(paperDiv);
+            papersContainer.appendChild(
+              paperDiv,
+              
+            ); 
           });
       })
       .catch((error) => {
@@ -96,4 +94,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Call displayPastPapers function with the extracted course ID
   displayPastPapers(courseId);
 });
-

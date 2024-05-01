@@ -12,7 +12,7 @@ function getUrlParameter(name) {
 var uid = getUrlParameter("uid");
 var token = getUrlParameter("token");
 
-// Perform activation logic using fetch API (modern alternative to XMLHttpRequest)
+
 if (uid && token) {
   fetch("http://localhost:8000/auth/users/activation/", {
     method: "POST",
