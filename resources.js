@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     fetch(
-      "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/me/",
+      "https://papershub-prod-ee9f6b8e1268.herokuapp.com/auth/users/me/",
       {
         method: "GET",
         headers: {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     fetch(
-      `https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/papers/Course/`,
+      `https://papershub-prod-ee9f6b8e1268.herokuapp.com/papers/Course/`,
       {
         method: "GET",
         headers: {
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error fetching courses:", error);
       });
     fetch(
-      `https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/papers/Course/`,
+      `https://papershub-prod-ee9f6b8e1268.herokuapp.com/papers/Course/`,
       {
         method: "GET",
         headers: {

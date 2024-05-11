@@ -44,7 +44,7 @@ loginForm.addEventListener("submit", async (e) => {
   try {
     // Make a POST request to your login API endpoint
     const response = await fetch(
-      "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/api/login/",
+      "https://papershub-prod-ee9f6b8e1268.herokuapp.com/login/",
       {
         method: "POST",
         headers: {

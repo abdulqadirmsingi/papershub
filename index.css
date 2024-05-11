@@ -355,6 +355,10 @@ body {
 
 /* FAQ */
 
+.row {
+  --bs-gutter-x: 0rem !important;
+}
+
 .mu-title-area h2 {
   font-size: 32px;
   font-weight: 600;

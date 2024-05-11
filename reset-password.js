@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const response = await axios.post(
-        "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/reset_password_confirm/",
+        "https://papershub-prod-ee9f6b8e1268.herokuapp.com/auth/users/reset_password_confirm/",
         data,
         {
           headers: {

@@ -15,7 +15,7 @@ var token = getUrlParameter("token");
 
 if (uid && token) {
   fetch(
-    "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/activation/",
+    "https://papershub-prod-ee9f6b8e1268.herokuapp.com/auth/users/activation/",
     {
       method: "POST",
       headers: {

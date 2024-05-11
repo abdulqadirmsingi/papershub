@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Make POST request to Django backend
     axios
       .post(
-        "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/",
+        "https://papershub-prod-ee9f6b8e1268.herokuapp.com/auth/users/",
         jsonData
       )
       .then(function (response) {
