@@ -43,13 +43,16 @@ loginForm.addEventListener("submit", async (e) => {
 
   try {
     // Make a POST request to your login API endpoint
-    const response = await fetch("http://127.0.0.1:8000/api/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    const response = await fetch(
+      "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/api/login/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
 
     if (response.ok) {
       // Assuming your API returns a token

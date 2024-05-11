@@ -22,7 +22,6 @@ confirm_password_toggle.addEventListener("click", function () {
   }
 });
 
-
 function validatePassword() {
   if (password.value !== confirm_password.value) {
     confirm_password.setCustomValidity("Passwords do not match");
@@ -30,6 +29,7 @@ function validatePassword() {
     confirm_password.setCustomValidity("");
   }
 }
+
 
 password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
@@ -51,13 +51,28 @@ document.addEventListener("DOMContentLoaded", function () {
       jsonData[key] = value;
     });
 
+    const phoneNumberInput = formData.get("phone_number");
+    if (!isValidTanzanianPhoneNumber(phoneNumberInput)) {
+      const phoneNumberError = document.createElement("div");
+      phoneNumberError.textContent = "* Please enter a valid phone number";
+      phoneNumberError.classList.add("error-message");
+      phoneNumberError.style.color = "red";
+      phoneNumberError.style.paddingBottom = "5px";
+      const phoneNumberField = form.querySelector("#phone_number");
+      phoneNumberField.parentNode.appendChild(phoneNumberError);
+      return;
+    }
     // Make POST request to Django backend
     axios
-      .post("http://127.0.0.1:8000/auth/users/", jsonData)
+      .post(
+        "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/",
+        jsonData
+      )
       .then(function (response) {
         console.log("Data sent successfully");
         const errorMessage = document.createElement("div");
-        errorMessage.textContent = "Account Made Succesfully, Please Check Your e-mail to Activate Your Account!";
+        errorMessage.textContent =
+          "Account Made Succesfully, Please Check Your e-mail to Activate Your Account!";
         errorMessage.classList.add("error-message");
         errorMessage.style.color = "green";
         errorMessage.style.paddingBottom = "20px";
@@ -69,20 +84,24 @@ document.addEventListener("DOMContentLoaded", function () {
           if (successMessage) {
             successMessage.remove();
           }
-        }, 5000); 
+        }, 5000);
       })
 
       .catch(function (error) {
         console.error("Error sending data:", error);
-        // Handle error response, maybe show an error message to the user
-        if (error.response.status === 400 && error.response.data.email) {
-          const errorMessage = document.createElement("div");
-          errorMessage.textContent =
-            "Email is already taken. Please use a different email.";
-          errorMessage.classList.add("error-message");
-          errorMessage.style.color = "red"; 
-          errorMessage.style.paddingBottom = "20px";
-          form.insertBefore(errorMessage, form.firstChild); 
+        // Handle error response, append error messages below specific input fields
+        if (error.response.status === 400 && error.response.data) {
+          for (const key in error.response.data) {
+            const input = form.querySelector(`[name="${key}"]`);
+            if (input) {
+              const errorMessage = document.createElement("div");
+              errorMessage.textContent = `* ${error.response.data[key]}`;
+              errorMessage.classList.add("error-message");
+              errorMessage.style.color = "red";
+              errorMessage.style.paddingBottom = "5px";
+              input.parentNode.appendChild(errorMessage);
+            }
+          }
         } else if (
           error.response.status === 400 &&
           error.response.data.phone_number
@@ -92,34 +111,21 @@ document.addEventListener("DOMContentLoaded", function () {
             "Phone number does not match the required format or already exists.";
           errorMessage.classList.add("error-message");
           errorMessage.style.color = "red";
-          errorMessage.style.paddingBottom = "20px";
-          form.insertBefore(errorMessage, form.firstChild);
-        } else if (
-          error.response.status === 400 &&
-          error.response.data.password
-        ) {
-          const errorMessage = document.createElement("div");
-          errorMessage.textContent = error.response.data.password.join(" ");
-          errorMessage.classList.add("error-message");
-          errorMessage.style.color = "red";
-          errorMessage.style.paddingBottom = "20px";
-          form.insertBefore(errorMessage, form.firstChild);
-        } else {
-          // Handle other error responses, maybe show a general error message to the user
-          const errorMessage = document.createElement("div");
-          errorMessage.textContent = "Please enter the right credentials!";
-          errorMessage.classList.add("error-message");
-          errorMessage.style.color = "red";
-          errorMessage.style.paddingBottom = "10px";
-          form.insertBefore(errorMessage, form.firstChild);
+          errorMessage.style.paddingBottom = "5px";
+          input.parentNode.appendChild(errorMessage);
         }
       });
   });
 });
 
-
 function validateYear(input) {
   if (input.value > 5) {
     input.value = 5; // Reset the value to 5 if it exceeds the maximum
   }
+}
+
+function isValidTanzanianPhoneNumber(phoneNumber) {
+  // Modify this function based on your specific phone number format requirements
+  const phoneRegex = /^0\d{9}$/; // Tanzanian phone numbers start with +255 or 0, followed by 9 digits
+  return phoneRegex.test(phoneNumber);
 }

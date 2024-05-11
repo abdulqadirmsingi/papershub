@@ -30,13 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    fetch("http://127.0.0.1:8000/auth/users/me/", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      credentials: "include",
-    })
+    fetch(
+      "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/me/",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: "include",
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         const userHeading = document.getElementById("user-info-heading");
@@ -54,13 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error fetching user data:", error);
       });
 
-    fetch(`http://127.0.0.1:8000/papers/Course/`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      credentials: "include",
-    })
+    fetch(
+      `https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/papers/Course/`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: "include",
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         const courseContainer = document.getElementById("faq1");
@@ -139,13 +145,16 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => {
         console.error("Error fetching courses:", error);
       });
-    fetch(`http://127.0.0.1:8000/papers/Course/`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-      credentials: "include",
-    })
+    fetch(
+      `https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/papers/Course/`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: "include",
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         const courseContainer = document.getElementById("faq2");
@@ -197,21 +206,21 @@ document.addEventListener("DOMContentLoaded", function () {
         </li>
       </ul>
     `;
-    const pastPapersLinks = document.querySelectorAll(
-      'a[href="pastpapers.html"]'
-    );
-    pastPapersLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent the default action of the link
+              const pastPapersLinks = document.querySelectorAll(
+                'a[href="pastpapers.html"]'
+              );
+              pastPapersLinks.forEach((link) => {
+                link.addEventListener("click", (event) => {
+                  event.preventDefault(); // Prevent the default action of the link
 
-        // Extract the courseId from the URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const courseId = urlParams.get("courseId");
+                  // Extract the courseId from the URL
+                  const urlParams = new URLSearchParams(window.location.search);
+                  const courseId = urlParams.get("courseId");
 
-        // Call displayPastPapers function with the extracted course ID
-        displayPastPapers(courseId);
-      });
-    });
+                  // Call displayPastPapers function with the extracted course ID
+                  displayPastPapers(courseId);
+                });
+              });
 
               courseDiv.appendChild(courseInfoDiv);
               courseDiv.appendChild(courseActionsDiv);

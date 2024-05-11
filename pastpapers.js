@@ -33,7 +33,28 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!accessToken || !refreshToken) {
     window.location.href = "/login.html";
   }
-  const displayPastPapers = (courseId) => {
+  const fetchUserSubscriptionStatus = async () => {
+    try {
+      const response = await fetch(
+        "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/me/",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          credentials: "include",
+        }
+      );
+      const userData = await response.json();
+      return userData.subscribed;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      return false;
+    }
+  };
+  const displayPastPapers = async (courseId) => {
+    const isSubscribed = await fetchUserSubscriptionStatus();
+
     // Make a fetch request to the backend API using the provided course ID
     fetch(`http://127.0.0.1:8000/papers/Course/${courseId}/paper/`, {
       method: "GET",
@@ -76,12 +97,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
             paperDiv.appendChild(paperText);
             paperDiv.appendChild(paperButton);
-            papersContainer.appendChild(
-              paperDiv,
-              
-            ); 
+            papersContainer.appendChild(paperDiv);
+
+            if (!paper.is_free && !isSubscribed) {
+              // Apply blur effect to the paper for non-subscribed users
+              paperDiv.classList.add("blurred");
+              downloadButton.disabled = true;
+              paperLink.removeAttribute("href");
+              downloadButton.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent default button behavior
+              });
+            } else if (paper.subscribed) {
+              // Remove blur effect for subscribed users
+              paperDiv.classList.remove("blurred");
+              downloadButton.disabled = false;
+              paperLink.href = paper.file; // Restore the link for subscribed users
+            }
           });
       })
+
       .catch((error) => {
         console.error("Error fetching past papers:", error);
       });

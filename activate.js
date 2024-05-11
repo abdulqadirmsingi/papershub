@@ -14,13 +14,16 @@ var token = getUrlParameter("token");
 
 
 if (uid && token) {
-  fetch("http://localhost:8000/auth/users/activation/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ uid: uid, token: token }),
-  })
+  fetch(
+    "https://papershub-prod-ee9f6b8e1268.herokuapp.com/papershub/auth/users/activation/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ uid: uid, token: token }),
+    }
+  )
     .then((response) => {
       if (response.ok) {
         document.getElementById("activationMessage").textContent =
